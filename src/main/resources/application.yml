@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: rc-backend
+  profiles:
+    active: ci
+  banner:
+    location: classpath:banner.txt
+
+server:
+  shutdown: graceful
+  tomcat:
+    accept-count: 100
+    max-swallow-size: 50
+    max-keep-alive-requests: 200
+    threads:
+      max: 500
+
+logging:
+  pattern:
+    level: "%5p [rc-backend,%X{traceId:-},%X{spanId:-}]"
+  level:
+    org:
+      ansj: WARN
+  tracing:
+    sampling:
+      probability: 1.0
