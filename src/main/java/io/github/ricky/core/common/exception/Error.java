@@ -61,7 +61,7 @@ public class Error implements ValueObject {
      */
     Map<String, Object> data;
 
-    public Error(MryException ex, String path, String traceId) {
+    public Error(RcException ex, String path, String traceId) {
         ErrorCodeEnum errorCode = ex.getCode();
         this.code = errorCode;
         this.message = ex.getMessage();

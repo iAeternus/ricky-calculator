@@ -6,7 +6,8 @@ import lombok.Getter;
 import org.springframework.data.annotation.Version;
 
 import java.time.Instant;
-import java.util.LinkedList;
+
+import static io.github.ricky.core.common.utils.CommonUtils.requireNonBlank;
 
 /**
  * @author Ricky
@@ -17,11 +18,6 @@ import java.util.LinkedList;
  */
 @Getter
 public abstract class AggregateRoot implements Entity {
-
-    /**
-     * 最多保留的操作日志数量
-     */
-    private static final int MAX_OPS_LOG_SIZE = 20;
 
     /**
      * 标识符，通过Snowflake算法生成
@@ -49,7 +45,15 @@ public abstract class AggregateRoot implements Entity {
     }
 
     protected AggregateRoot(String id) {
+        requireNonBlank(id, "ID must not be blank.");
 
+        this.id = id;
+        this.createdAt = Instant.now();
+    }
+
+    @Override
+    public String getIdentifier() {
+        return id;
     }
 
 }

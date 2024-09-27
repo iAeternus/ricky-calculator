@@ -12,11 +12,11 @@ import static org.apache.commons.lang3.StringUtils.isNotBlank;
  * @author Ricky
  * @version 1.0
  * @date 2024/9/9
- * @className MryException
+ * @className RcException
  * @desc 项目基本异常
  */
 @Getter
-public class MryException extends RuntimeException {
+public class RcException extends RuntimeException {
 
     /**
      * 错误码
@@ -39,23 +39,23 @@ public class MryException extends RuntimeException {
      */
     private String message;
 
-    public MryException(ErrorCodeEnum code, String userMessage) {
+    public RcException(ErrorCodeEnum code, String userMessage) {
         this.code = code;
         this.userMessage = userMessage;
         this.message = message(userMessage);
     }
 
-    public MryException(ErrorCodeEnum code, String userMessage,
-                        String key, Object value) {
+    public RcException(ErrorCodeEnum code, String userMessage,
+                       String key, Object value) {
         this.code = code;
         addData(key, value);
         this.userMessage = userMessage;
         this.message = message(userMessage);
     }
 
-    public MryException(ErrorCodeEnum code, String userMessage,
-                        String key1, Object value1,
-                        String key2, Object value2) {
+    public RcException(ErrorCodeEnum code, String userMessage,
+                       String key1, Object value1,
+                       String key2, Object value2) {
         this.code = code;
         addData(key1, value1);
         addData(key2, value2);
@@ -63,10 +63,10 @@ public class MryException extends RuntimeException {
         this.message = message(userMessage);
     }
 
-    public MryException(ErrorCodeEnum code, String userMessage,
-                        String key1, Object value1,
-                        String key2, Object value2,
-                        String key3, Object value3) {
+    public RcException(ErrorCodeEnum code, String userMessage,
+                       String key1, Object value1,
+                       String key2, Object value2,
+                       String key3, Object value3) {
         this.code = code;
         addData(key1, value1);
         addData(key2, value2);
@@ -75,11 +75,11 @@ public class MryException extends RuntimeException {
         this.message = message(userMessage);
     }
 
-    public MryException(ErrorCodeEnum code, String userMessage,
-                        String key1, Object value1,
-                        String key2, Object value2,
-                        String key3, Object value3,
-                        String key4, Object value4) {
+    public RcException(ErrorCodeEnum code, String userMessage,
+                       String key1, Object value1,
+                       String key2, Object value2,
+                       String key3, Object value3,
+                       String key4, Object value4) {
         this.code = code;
         addData(key1, value1);
         addData(key2, value2);
@@ -89,7 +89,7 @@ public class MryException extends RuntimeException {
         this.message = message(userMessage);
     }
 
-    public MryException(ErrorCodeEnum code, String userMessage, Map<String, Object> data) {
+    public RcException(ErrorCodeEnum code, String userMessage, Map<String, Object> data) {
         this.code = code;
         this.data.putAll(data);
         this.userMessage = userMessage;
@@ -122,8 +122,8 @@ public class MryException extends RuntimeException {
      * @param data 异常数据
      * @return 校验异常
      */
-    public static MryException requestValidationException(Map<String, Object> data) {
-        return new MryException(ErrorCodeEnum.REQUEST_VALIDATION_FAILED, "请求数据验证失败。", data);
+    public static RcException requestValidationException(Map<String, Object> data) {
+        return new RcException(ErrorCodeEnum.REQUEST_VALIDATION_FAILED, "请求数据验证失败。", data);
     }
 
     /**
@@ -133,8 +133,8 @@ public class MryException extends RuntimeException {
      * @param value 数据值
      * @return 校验异常
      */
-    public static MryException requestValidationException(String key, Object value) {
-        return new MryException(ErrorCodeEnum.REQUEST_VALIDATION_FAILED, "请求数据验证失败。", key, value);
+    public static RcException requestValidationException(String key, Object value) {
+        return new RcException(ErrorCodeEnum.REQUEST_VALIDATION_FAILED, "请求数据验证失败。", key, value);
     }
 
     /**
@@ -143,8 +143,8 @@ public class MryException extends RuntimeException {
      * @param message 异常信息
      * @return 校验异常
      */
-    public static MryException requestValidationException(String message) {
-        return new MryException(ErrorCodeEnum.REQUEST_VALIDATION_FAILED, message);
+    public static RcException requestValidationException(String message) {
+        return new RcException(ErrorCodeEnum.REQUEST_VALIDATION_FAILED, message);
     }
 
     /**
@@ -152,8 +152,8 @@ public class MryException extends RuntimeException {
      *
      * @return 拒绝访问异常
      */
-    public static MryException accessDeniedException() {
-        return new MryException(ErrorCodeEnum.ACCESS_DENIED, "权限不足。");
+    public static RcException accessDeniedException() {
+        return new RcException(ErrorCodeEnum.ACCESS_DENIED, "权限不足。");
     }
 
     /**
@@ -162,8 +162,8 @@ public class MryException extends RuntimeException {
      * @param userMessage 使用者提供的异常信息
      * @return 拒绝访问异常
      */
-    public static MryException accessDeniedException(String userMessage) {
-        return new MryException(ErrorCodeEnum.ACCESS_DENIED, userMessage);
+    public static RcException accessDeniedException(String userMessage) {
+        return new RcException(ErrorCodeEnum.ACCESS_DENIED, userMessage);
     }
 
     /**
@@ -171,8 +171,8 @@ public class MryException extends RuntimeException {
      *
      * @return 认证异常
      */
-    public static MryException authenticationException() {
-        return new MryException(ErrorCodeEnum.AUTHENTICATION_FAILED, "登录失败。");
+    public static RcException authenticationException() {
+        return new RcException(ErrorCodeEnum.AUTHENTICATION_FAILED, "登录失败。");
     }
 
     /**
