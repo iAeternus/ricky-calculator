@@ -59,7 +59,7 @@ public class Relic extends AggregateRoot {
      */
     private double score;
 
-    public Relic(String belongTo, boolean isCritical, RelicPositionEnum position, RelicAttr attr) {
+    public Relic(String belongTo, Boolean isCritical, RelicPositionEnum position, RelicAttr attr) {
         super(newRelicId());
         this.belongTo = belongTo;
         this.isCritical = isCritical;

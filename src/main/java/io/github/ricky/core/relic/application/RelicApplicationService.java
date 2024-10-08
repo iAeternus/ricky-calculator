@@ -24,7 +24,6 @@ import org.springframework.transaction.annotation.Transactional;
 @RequiredArgsConstructor
 public class RelicApplicationService {
 
-    private final RelicRepository relicRepository;
     private final RelicFactory relicFactory;
     private final YieldWeightDao yieldWeightDao;
 

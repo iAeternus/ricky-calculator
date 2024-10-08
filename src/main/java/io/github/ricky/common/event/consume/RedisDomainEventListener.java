@@ -1,10 +1,8 @@
 package io.github.ricky.common.event.consume;
 
-import io.github.ricky.common.tracing.TracingService;
 import io.github.ricky.core.common.domain.event.DomainEvent;
 import io.github.ricky.core.common.domain.event.DomainEventConsumer;
 import io.github.ricky.core.common.utils.RcObjectMapper;
-import io.micrometer.tracing.ScopedSpan;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Profile;
@@ -27,11 +25,11 @@ public class RedisDomainEventListener implements DomainEventListener, StreamList
 
     private final RcObjectMapper mryObjectMapper;
     private final DomainEventConsumer domainEventConsumer;
-    private final TracingService tracingService;
+    // private final TracingService tracingService;
 
     @Override
     public void onMessage(ObjectRecord<String, String> message) {
-        ScopedSpan scopedSpan = tracingService.startNewSpan("domain-event-listener");
+        // ScopedSpan scopedSpan = tracingService.startNewSpan("domain-event-listener");
 
         String jsonString = message.getValue();
         DomainEvent domainEvent = mryObjectMapper.readValue(jsonString, DomainEvent.class);
@@ -41,6 +39,6 @@ public class RedisDomainEventListener implements DomainEventListener, StreamList
             log.error("Failed to listen domain event[{}:{}].", domainEvent.getType(), domainEvent.getId(), t);
         }
 
-        scopedSpan.end();
+        // scopedSpan.end();
     }
 }

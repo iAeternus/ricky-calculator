@@ -12,6 +12,8 @@ import lombok.Getter;
 public interface RcConstants {
 
     String CHINA_TIME_ZONE = "Asia/Shanghai";
+    String AUTH_COOKIE_NAME = "rctoken";
+    String AUTHORIZATION = "Authorization";
 
     String APP_COLLECTION = "app";
     String EVENT_COLLECTION = "event";

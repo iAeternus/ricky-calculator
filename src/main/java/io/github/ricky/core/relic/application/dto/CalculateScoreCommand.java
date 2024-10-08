@@ -27,13 +27,15 @@ public class CalculateScoreCommand implements Command {
     /**
      * 主词条是否为双爆
      */
-    boolean isCritical;
+    @NotNull
+    Boolean isCritical;
 
     /**
      * 圣遗物位置<br>
      * 0-花 1-毛 2-沙 3-杯 4-头
      */
-    int position;
+    @NotNull
+    Integer position;
 
     /**
      * 暴击率
