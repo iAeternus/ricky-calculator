@@ -12,6 +12,8 @@ spring:
     username: root
     password: 123456
   data:
+    mongodb:
+      uri: mongodb://localhost:27017/mry_local_db
     redis:
       database: 1
       host: localhost
@@ -20,3 +22,23 @@ spring:
       timeout: 10000
   cache:
     type: redis
+  kafka:
+    producer:
+      bootstrap-servers: # TODO
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+      batch-size: 131072  #128kb
+      buffer-memory: 67108864 #64M
+      #max-request-size: 5242880
+      #linger-ms: 5
+      retries: 1
+      acks: 0
+      compression-type: gzip
+      properties:
+        max.request.size: 5242880 #5M
+        linger.ms: 5
+rc:
+  redis:
+    domainEventStream: DomainEvent.LOCAL
+    notificationStream: Notification.LOCAL
+    webhookStream: Webhook.LOCAL

@@ -11,6 +11,13 @@ import lombok.Getter;
  */
 public interface RcConstants {
 
+    String CHINA_TIME_ZONE = "Asia/Shanghai";
+
     String APP_COLLECTION = "app";
+    String EVENT_COLLECTION = "event";
+
+    String REDIS_DOMAIN_EVENT_CONSUMER_GROUP = "domain.event.group";
+    String REDIS_WEBHOOK_CONSUMER_GROUP = "webhook.group";
+    String REDIS_NOTIFICATION_CONSUMER_GROUP = "notification.group";
 
 }

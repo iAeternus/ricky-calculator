@@ -26,4 +26,13 @@ public class CommonUtils {
         return str;
     }
 
+    /**
+     * 四舍五入保留两位小数
+     * @param number 浮点数
+     * @return 处理后的浮点数
+     */
+    public static double keepTwo(double number) {
+        return (int) (number * 100 + 0.5) / 100.0;
+    }
+
 }
