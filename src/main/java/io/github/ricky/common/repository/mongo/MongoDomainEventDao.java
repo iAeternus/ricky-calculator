@@ -59,9 +59,7 @@ public class MongoDomainEventDao implements DomainEventDao {
         Objects.requireNonNull(ids, "Domain event IDs must not be blank.");
 
         return mongoTemplate.find(Query.query(Criteria.where("_id").in(ids))
-                        .with(Sort.by(Sort.Direction.ASC, "raisedAt")),
-                DomainEvent.class
-        );
+                .with(Sort.by(Sort.Direction.ASC, "raisedAt")), DomainEvent.class);
     }
 
     @Override

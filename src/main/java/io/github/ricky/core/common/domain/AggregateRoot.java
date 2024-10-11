@@ -5,6 +5,7 @@ import io.github.ricky.core.common.utils.CommonUtils;
 import io.github.ricky.core.common.utils.Entity;
 import lombok.AccessLevel;
 import lombok.Getter;
+import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Version;
 
 import java.time.Instant;
@@ -29,6 +30,7 @@ public abstract class AggregateRoot implements Entity {
     /**
      * 标识符，通过Snowflake算法生成
      */
+    @Id
     private String id;
 
     /**

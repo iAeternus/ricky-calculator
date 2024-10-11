@@ -45,13 +45,16 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 public class BaseApiTest {
 
     @Autowired
-    private RcObjectMapper objectMapper;
+    protected RcObjectMapper objectMapper;
 
     @Autowired
     protected StringRedisTemplate stringRedisTemplate;
 
     @Autowired
     protected DomainEventDao domainEventDao;
+
+    @Autowired
+    protected RelicRepository relicRepository;
 
     // add here...
 

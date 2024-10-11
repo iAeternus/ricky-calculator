@@ -26,13 +26,16 @@ public class RelicApplicationService {
 
     private final RelicFactory relicFactory;
     private final YieldWeightDao yieldWeightDao;
+    private final RelicRepository relicRepository;
 
     @Transactional
     public CalculateScoreResponse calculateScore(CalculateScoreCommand command) {
         Relic relic = relicFactory.createRelic(command);
         YieldWeight yieldWeight = yieldWeightDao.byBelongs(command.getBelongTo());
         double score = relic.calculateScore(yieldWeight);
+        relicRepository.save(relic);
         return CalculateScoreResponse.builder()
+                .id(relic.getId())
                 .score(score)
                 .build();
     }

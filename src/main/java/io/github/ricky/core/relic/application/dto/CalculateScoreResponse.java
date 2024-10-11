@@ -18,6 +18,7 @@ import lombok.Value;
 @AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class CalculateScoreResponse implements Response {
 
+    String id;
     double score;
 
 }

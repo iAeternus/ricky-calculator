@@ -26,7 +26,7 @@ public class RelicFactory {
                 .defensePercentage(command.getDefensePercentage())
                 .defense(command.getDefense())
                 .build();
-        return new Relic(command.getBelongTo(), command.getIsCritical(), RelicPositionEnum.of(command.getPosition()), relicAttr);
+        return new Relic(command.getBelongTo(), command.isCritical(), RelicPositionEnum.of(command.getPosition()), relicAttr);
     }
 
 }

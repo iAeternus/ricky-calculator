@@ -3,7 +3,6 @@ package io.github.ricky.core.relic.domain;
 import io.github.ricky.core.common.domain.AggregateRoot;
 import io.github.ricky.core.common.utils.RcConstants;
 import io.github.ricky.core.common.utils.SnowflakeIdGenerator;
-import io.github.ricky.core.relic.domain.event.CalculateScoreDomainEvent;
 import io.github.ricky.core.relic.domain.yieldweight.YieldWeight;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
@@ -25,8 +24,8 @@ import static io.github.ricky.core.common.utils.CommonUtils.keepTwo;
  * @desc 圣遗物
  */
 @Getter
-@Document
-@TypeAlias(RcConstants.APP_COLLECTION)
+@Document(RcConstants.RELIC_COLLECTION)
+@TypeAlias(RcConstants.RELIC_COLLECTION)
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class Relic extends AggregateRoot {
 
@@ -94,7 +93,8 @@ public class Relic extends AggregateRoot {
 
         score += isCritical ? 20 : 0; // 处理主词条
         score = keepTwo(score);
-        raiseEvent(new CalculateScoreDomainEvent(this));
+        this.score = score;
         return score;
     }
+
 }

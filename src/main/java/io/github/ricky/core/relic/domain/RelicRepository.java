@@ -11,4 +11,6 @@ public interface RelicRepository {
 
     void save(Relic relic);
 
+    Relic byId(String id);
+
 }

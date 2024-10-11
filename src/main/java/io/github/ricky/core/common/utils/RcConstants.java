@@ -1,7 +1,5 @@
 package io.github.ricky.core.common.utils;
 
-import lombok.Getter;
-
 /**
  * @author Ricky
  * @version 1.0
@@ -15,7 +13,7 @@ public interface RcConstants {
     String AUTH_COOKIE_NAME = "rctoken";
     String AUTHORIZATION = "Authorization";
 
-    String APP_COLLECTION = "app";
+    String RELIC_COLLECTION = "relics";
     String EVENT_COLLECTION = "event";
 
     String REDIS_DOMAIN_EVENT_CONSUMER_GROUP = "domain.event.group";

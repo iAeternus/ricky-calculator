@@ -29,6 +29,8 @@ public enum ErrorCodeEnum {
     ACCESS_DENIED(403),
 
     // 404
+    AR_NOT_FOUND(404),
+    AR_NOT_FOUND_ALL(404),
     YIELD_WEIGHT_NOT_FOUND(404),
     DOMAIN_EVENT_NOT_FOUND(404),
 

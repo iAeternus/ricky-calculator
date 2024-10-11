@@ -21,4 +21,9 @@ public class MongoRelicRepository extends MongoBaseRepository<Relic> implements 
     public void save(Relic relic) {
         super.save(relic);
     }
+
+    @Override
+    public Relic byId(String id) {
+        return super.byId(id);
+    }
 }

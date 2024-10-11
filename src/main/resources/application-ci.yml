@@ -13,7 +13,11 @@ spring:
     password: 123456
   data:
     mongodb:
-      uri: mongodb://localhost:27017/rc_local_db
+      host: localhost
+      port: 27017
+      database: rc_ci_db
+#      username: ricky
+#      password: 123456
     redis:
       database: 2
       host: localhost

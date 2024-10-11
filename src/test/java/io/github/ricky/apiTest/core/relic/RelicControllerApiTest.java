@@ -3,6 +3,7 @@ package io.github.ricky.apiTest.core.relic;
 import io.github.ricky.apiTest.BaseApiTest;
 import io.github.ricky.core.relic.application.dto.CalculateScoreCommand;
 import io.github.ricky.core.relic.application.dto.CalculateScoreResponse;
+import io.github.ricky.core.relic.domain.Relic;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -35,7 +36,8 @@ public class RelicControllerApiTest extends BaseApiTest {
         // Then
         assertEquals(45.37, response.getScore());
 
-
+        Relic relic = relicRepository.byId(response.getId());
+        System.out.println(relic);
     }
 
 }
