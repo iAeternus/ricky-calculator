@@ -1,6 +1,6 @@
 package io.github.ricky.core.common.exception;
 
-import io.github.ricky.core.common.utils.ValueObject;
+import io.github.ricky.core.common.marker.ValueObject;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Value;

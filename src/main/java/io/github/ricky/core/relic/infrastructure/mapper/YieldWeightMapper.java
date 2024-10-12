@@ -1,6 +1,6 @@
 package io.github.ricky.core.relic.infrastructure.mapper;
 
-import io.github.ricky.core.relic.infrastructure.vo.YieldWeightVO;
+import io.github.ricky.core.relic.infrastructure.vo.YieldWeightPO;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
 
@@ -15,6 +15,6 @@ import org.apache.ibatis.annotations.Select;
 public interface YieldWeightMapper {
 
     @Select("select * from `faster-relic-rating-calculator`.relic_yield_weights where belongs = #{belongTo}")
-    YieldWeightVO byBelongs(String belongTo);
+    YieldWeightPO byBelongs(String belongTo);
 
 }

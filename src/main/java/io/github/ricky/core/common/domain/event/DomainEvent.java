@@ -1,7 +1,7 @@
 package io.github.ricky.core.common.domain.event;
 
 import io.github.ricky.core.common.domain.AggregateRoot;
-import io.github.ricky.core.common.utils.RcConstants;
+import io.github.ricky.core.common.constants.RcConstants;
 import io.github.ricky.core.common.utils.SnowflakeIdGenerator;
 import lombok.AccessLevel;
 import lombok.Getter;

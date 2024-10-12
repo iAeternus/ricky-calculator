@@ -1,7 +1,7 @@
 package io.github.ricky.common.event.consume;
 
 import io.github.ricky.core.common.properties.RedisProperties;
-import io.github.ricky.core.common.utils.RcConstants;
+import io.github.ricky.core.common.constants.RcConstants;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Qualifier;

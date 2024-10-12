@@ -2,7 +2,7 @@ package io.github.ricky.core.common.domain;
 
 import io.github.ricky.core.common.domain.event.DomainEvent;
 import io.github.ricky.core.common.utils.CommonUtils;
-import io.github.ricky.core.common.utils.Entity;
+import io.github.ricky.core.common.marker.Entity;
 import lombok.AccessLevel;
 import lombok.Getter;
 import org.springframework.data.annotation.Id;
@@ -10,11 +10,8 @@ import org.springframework.data.annotation.Version;
 
 import java.time.Instant;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Objects;
 
-import static io.github.ricky.core.common.utils.CommonUtils.requireNonBlank;
 import static java.time.Instant.now;
 
 /**

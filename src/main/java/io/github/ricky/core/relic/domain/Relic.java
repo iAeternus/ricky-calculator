@@ -1,7 +1,7 @@
 package io.github.ricky.core.relic.domain;
 
 import io.github.ricky.core.common.domain.AggregateRoot;
-import io.github.ricky.core.common.utils.RcConstants;
+import io.github.ricky.core.common.constants.RcConstants;
 import io.github.ricky.core.common.utils.SnowflakeIdGenerator;
 import io.github.ricky.core.relic.domain.yieldweight.YieldWeight;
 import jakarta.validation.Valid;

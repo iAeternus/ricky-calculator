@@ -1,18 +1,19 @@
 package io.github.ricky.core.relic.infrastructure.vo;
 
-import io.github.ricky.core.common.validation.attr.AttrRange;
+import io.github.ricky.core.common.marker.PersistentObject;
 import lombok.Data;
 
 /**
  * @author Ricky
  * @version 1.0
  * @date 2024/10/8
- * @className YieldWeightVO
+ * @className YieldWeightPO
  * @desc
  */
 @Data
-public class YieldWeightVO {
+public class YieldWeightPO implements PersistentObject {
 
+    private String belongs;
     private double critChance;
     private double critDamage;
     private double energyRecharge;

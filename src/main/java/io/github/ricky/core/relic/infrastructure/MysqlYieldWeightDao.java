@@ -7,11 +7,9 @@ import io.github.ricky.core.relic.domain.yieldweight.YieldWeight;
 import io.github.ricky.core.relic.domain.yieldweight.YieldWeightDao;
 import io.github.ricky.core.relic.infrastructure.converter.YieldWeightConverter;
 import io.github.ricky.core.relic.infrastructure.mapper.YieldWeightMapper;
-import io.github.ricky.core.relic.infrastructure.vo.YieldWeightVO;
+import io.github.ricky.core.relic.infrastructure.vo.YieldWeightPO;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-
-import java.util.Map;
 
 /**
  * @author Ricky
@@ -29,11 +27,11 @@ public class MysqlYieldWeightDao implements YieldWeightDao {
 
     @Override
     public YieldWeight byBelongs(String belongTo) {
-        YieldWeightVO yieldWeightVO = yieldWeightMapper.byBelongs(belongTo);
-        if(yieldWeightVO == null) {
+        YieldWeightPO yieldWeightPO = yieldWeightMapper.byBelongs(belongTo);
+        if(yieldWeightPO == null) {
             throw new RcException(ErrorCodeEnum.YIELD_WEIGHT_NOT_FOUND, "未找到资源。",
-                    MapUtils.mapOf("type", YieldWeightVO.class.getSimpleName(), "belongTo", belongTo));
+                    MapUtils.mapOf("type", YieldWeightPO.class.getSimpleName(), "belongTo", belongTo));
         }
-        return yieldWeightConverter.convert(yieldWeightVO);
+        return yieldWeightConverter.convert(yieldWeightPO);
     }
 }

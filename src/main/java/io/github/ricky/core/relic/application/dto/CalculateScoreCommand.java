@@ -1,9 +1,9 @@
 package io.github.ricky.core.relic.application.dto;
 
-import io.github.ricky.core.common.utils.Command;
+import io.github.ricky.core.common.marker.Command;
 import io.github.ricky.core.common.validation.attr.AttrRange;
-import io.github.ricky.core.relic.domain.RelicPositionEnum;
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 import lombok.*;
 
 /**
@@ -22,6 +22,7 @@ public class CalculateScoreCommand implements Command {
      * 所属角色
      */
     @NotNull
+    @Size(max = 10)
     String belongTo;
 
     /**

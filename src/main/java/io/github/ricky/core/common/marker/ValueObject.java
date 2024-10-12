@@ -1,4 +1,4 @@
-package io.github.ricky.core.common.utils;
+package io.github.ricky.core.common.marker;
 
 import java.io.Serializable;
 

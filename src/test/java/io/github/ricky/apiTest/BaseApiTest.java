@@ -5,7 +5,7 @@ import io.github.ricky.core.common.domain.event.DomainEventDao;
 import io.github.ricky.core.common.exception.Error;
 import io.github.ricky.core.common.exception.ErrorCodeEnum;
 import io.github.ricky.core.common.exception.QErrorResponse;
-import io.github.ricky.core.common.utils.RcConstants;
+import io.github.ricky.core.common.constants.RcConstants;
 import io.github.ricky.core.common.utils.RcObjectMapper;
 import io.github.ricky.core.relic.domain.RelicRepository;
 import io.restassured.RestAssured;

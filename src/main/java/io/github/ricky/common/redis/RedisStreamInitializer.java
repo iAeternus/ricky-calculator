@@ -1,7 +1,7 @@
 package io.github.ricky.common.redis;
 
 import io.github.ricky.core.common.properties.RedisProperties;
-import io.github.ricky.core.common.utils.RcConstants;
+import io.github.ricky.core.common.constants.RcConstants;
 import io.lettuce.core.RedisBusyException;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.RedisSystemException;

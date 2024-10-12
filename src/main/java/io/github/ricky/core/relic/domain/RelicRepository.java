@@ -1,5 +1,11 @@
 package io.github.ricky.core.relic.domain;
 
+import io.github.ricky.core.common.page.PagedList;
+import io.github.ricky.core.relic.query.dto.RelicHistoryPageQuery;
+import io.github.ricky.core.relic.query.dto.RelicHistoryResult;
+
+import java.util.List;
+
 /**
  * @author Ricky
  * @version 1.0
@@ -13,4 +19,7 @@ public interface RelicRepository {
 
     Relic byId(String id);
 
+    PagedList<RelicHistoryResult> listRelicHistory(RelicHistoryPageQuery pageQuery);
+
+    List<Relic> listAll();
 }
