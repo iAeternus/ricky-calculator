@@ -39,4 +39,8 @@ public class RelicApplicationService {
                 .score(score)
                 .build();
     }
+
+    public void deleteById(String id) {
+        relicRepository.removeById(id);
+    }
 }

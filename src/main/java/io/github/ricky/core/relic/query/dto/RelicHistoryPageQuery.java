@@ -1,10 +1,9 @@
 package io.github.ricky.core.relic.query.dto;
 
 import io.github.ricky.core.common.page.PageQuery;
-import io.github.ricky.core.common.validation.attr.DoubleRange;
+import io.github.ricky.core.common.validation.number.DoubleRange;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.Null;
 import jakarta.validation.constraints.Size;
 import lombok.AccessLevel;
 import lombok.Getter;

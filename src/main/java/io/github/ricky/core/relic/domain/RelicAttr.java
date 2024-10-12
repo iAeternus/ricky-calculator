@@ -1,7 +1,7 @@
 package io.github.ricky.core.relic.domain;
 
 import io.github.ricky.core.common.marker.ValueObject;
-import io.github.ricky.core.common.validation.attr.DoubleRange;
+import io.github.ricky.core.common.validation.number.DoubleRange;
 import lombok.*;
 
 /**

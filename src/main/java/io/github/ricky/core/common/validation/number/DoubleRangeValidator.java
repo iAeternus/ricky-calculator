@@ -1,4 +1,4 @@
-package io.github.ricky.core.common.validation.attr;
+package io.github.ricky.core.common.validation.number;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;

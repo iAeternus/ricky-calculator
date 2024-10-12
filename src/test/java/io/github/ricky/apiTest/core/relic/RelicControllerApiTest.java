@@ -1,21 +1,25 @@
 package io.github.ricky.apiTest.core.relic;
 
 import io.github.ricky.apiTest.BaseApiTest;
+import io.github.ricky.core.common.exception.RcException;
 import io.github.ricky.core.common.page.PageQuery;
 import io.github.ricky.core.common.page.PagedList;
 import io.github.ricky.core.relic.application.dto.CalculateScoreCommand;
 import io.github.ricky.core.relic.application.dto.CalculateScoreResponse;
 import io.github.ricky.core.relic.domain.Relic;
+import io.github.ricky.core.relic.domain.RelicAttr;
+import io.github.ricky.core.relic.domain.RelicPositionEnum;
 import io.github.ricky.core.relic.query.dto.RelicHistoryPageQuery;
 import io.github.ricky.core.relic.query.dto.RelicHistoryResult;
 import io.github.ricky.core.relic.query.dto.YieldWeightQuery;
 import io.github.ricky.core.relic.query.dto.YieldWeightResult;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static io.github.ricky.core.common.page.PageQuery.MIN_PAGE_SIZE;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * @author Ricky
@@ -47,6 +51,25 @@ public class RelicControllerApiTest extends BaseApiTest {
 
         Relic relic = relicRepository.byId(response.getId());
         System.out.println(relic);
+    }
+
+    @Test
+    public void should_delete_relic_by_id() {
+        // Given
+        Relic relic = new Relic("胡桃", false, RelicPositionEnum.FLOWER_OF_LIFE, RelicAttr.builder()
+                .critChance(7.4)
+                .critDamage(19.4)
+                .energyRecharge(4.5)
+                .healthPercentage(10.5)
+                .build());
+        relicRepository.save(relic);
+        String id = relic.getId();
+
+        // When
+        RelicApi.deleteById(id);
+
+        // Then
+        assertThrows(RcException.class, () -> relicRepository.byId(id));
     }
 
     @Test

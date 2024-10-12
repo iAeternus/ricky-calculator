@@ -68,4 +68,16 @@ public class RelicApi {
                 });
     }
 
+    public static Response deleteByIdRaw(String relicId) {
+        return BaseApiTest.given()
+                .when()
+                .delete(ROOT_URL + "/{relicId}", relicId);
+    }
+
+    public static void deleteById(String relicId) {
+        deleteByIdRaw(relicId)
+                .then()
+                .statusCode(200);
+    }
+
 }

@@ -12,6 +12,7 @@ import io.github.ricky.core.relic.query.dto.RelicHistoryPageQuery;
 import io.github.ricky.core.relic.query.dto.RelicHistoryResult;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
@@ -56,6 +57,11 @@ public class MongoRelicRepository extends MongoBaseRepository<Relic> implements 
     @Override
     public List<Relic> listAll() {
         return mongoTemplate.findAll(Relic.class);
+    }
+
+    @Override
+    public void removeById(String id) {
+        mongoTemplate.remove(Query.query(Criteria.where("id").is(id)), Relic.class);
     }
 
 }

@@ -1,7 +1,7 @@
 package io.github.ricky.core.relic.application.dto;
 
 import io.github.ricky.core.common.marker.Command;
-import io.github.ricky.core.common.validation.attr.DoubleRange;
+import io.github.ricky.core.common.validation.number.DoubleRange;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;

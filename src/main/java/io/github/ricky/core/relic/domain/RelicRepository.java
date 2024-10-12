@@ -22,4 +22,6 @@ public interface RelicRepository {
     PagedList<RelicHistoryResult> listRelicHistory(RelicHistoryPageQuery pageQuery);
 
     List<Relic> listAll();
+
+    void removeById(String id);
 }
