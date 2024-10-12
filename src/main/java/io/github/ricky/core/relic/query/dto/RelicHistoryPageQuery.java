@@ -1,6 +1,7 @@
 package io.github.ricky.core.relic.query.dto;
 
 import io.github.ricky.core.common.page.PageQuery;
+import io.github.ricky.core.common.validation.attr.DoubleRange;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.Null;
@@ -28,5 +29,8 @@ public class RelicHistoryPageQuery extends PageQuery {
     @Min(0)
     @Max(4)
     private Integer position;
+
+    @DoubleRange(min = 0, max = 55)
+    private Double scoreGt;
 
 }

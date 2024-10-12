@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.regex.Pattern;
 
 /**
  * @author Ricky
@@ -87,45 +88,104 @@ public class MongoPageHelper {
                 .build();
     }
 
-    public QueryBuilder queryBuilder() {
-        return new QueryBuilder(new Query());
+    public PageQueryBuilder queryBuilder() {
+        return new PageQueryBuilder(new Query());
     }
 
     /**
      * 分页查询条件建造者
      */
-    public static class QueryBuilder {
+    public static class PageQueryBuilder {
         private final Query query;
 
-        public QueryBuilder(Query query) {
+        public PageQueryBuilder(Query query) {
             this.query = query;
         }
 
-        public QueryBuilder where(String key, String value) {
+        public PageQueryBuilder where(String key, String value) {
             return where(key, value, StringUtils::isNotBlank);
         }
 
-        public QueryBuilder where(String key, Object value) {
+        public PageQueryBuilder where(String key, Object value) {
             return where(key, value, Objects::nonNull);
         }
 
-        public <T> QueryBuilder where(String key, T value, Predicate<T> nullJudgement) {
+        public <T> PageQueryBuilder where(String key, T value, Predicate<T> nullJudgement) {
             if(nullJudgement.test(value)) {
                 query.addCriteria(Criteria.where(key).is(value));
             }
             return this;
         }
 
-        public QueryBuilder sortByAsc(String... properties) {
+        public PageQueryBuilder ne(String key, Number value) {
+            if(Objects.nonNull(value)) {
+                query.addCriteria(Criteria.where(key).ne(value));
+            }
+            return this;
+        }
+
+        public PageQueryBuilder gt(String key, Number value) {
+            if(Objects.nonNull(value)) {
+                query.addCriteria(Criteria.where(key).gt(value));
+            }
+            return this;
+        }
+
+        public PageQueryBuilder lt(String key, Number value) {
+            if(Objects.nonNull(value)) {
+                query.addCriteria(Criteria.where(key).lt(value));
+            }
+            return this;
+        }
+
+        public PageQueryBuilder gte(String key, Number value) {
+            if(Objects.nonNull(value)) {
+                query.addCriteria(Criteria.where(key).gte(value));
+            }
+            return this;
+        }
+
+        public PageQueryBuilder lte(String key, Number value) {
+            if(Objects.nonNull(value)) {
+                query.addCriteria(Criteria.where(key).lte(value));
+            }
+            return this;
+        }
+
+        public PageQueryBuilder in(String key, Object... values) {
+            if(Objects.nonNull(values)) {
+                query.addCriteria(Criteria.where(key).in(values));
+            }
+            return this;
+        }
+
+        public PageQueryBuilder nin(String key, Object... values) {
+            if(Objects.nonNull(values)) {
+                query.addCriteria(Criteria.where(key).nin(values));
+            }
+            return this;
+        }
+
+        public PageQueryBuilder sortByAsc(String... properties) {
             return sortBy(Sort.Direction.ASC, properties);
         }
 
-        public QueryBuilder sortByDesc(String... properties) {
+        public PageQueryBuilder sortByDesc(String... properties) {
             return sortBy(Sort.Direction.DESC, properties);
         }
 
-        public QueryBuilder sortBy(Sort.Direction direction, String... properties) {
+        public PageQueryBuilder sortBy(Sort.Direction direction, String... properties) {
             query.with(Sort.by(direction, properties));
+            return this;
+        }
+
+        public PageQueryBuilder regex(String key, String regex) {
+            query.addCriteria(Criteria.where(key).regex(regex));
+            return this;
+        }
+
+        public PageQueryBuilder regex(String key, Pattern pattern) {
+            query.addCriteria(Criteria.where(key).regex(pattern));
             return this;
         }
 

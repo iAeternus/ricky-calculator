@@ -76,6 +76,7 @@ public class RelicControllerApiTest extends BaseApiTest {
         RelicHistoryPageQuery pageQuery = RelicHistoryPageQuery.builder()
                 .belongTo("胡桃")
                 .position(0)
+                .scoreGt(45.0)
                 .pageIndex(1)
                 .pageSize(10)
                 .build();

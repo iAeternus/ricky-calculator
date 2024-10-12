@@ -7,16 +7,16 @@ import jakarta.validation.ConstraintValidatorContext;
  * @author Ricky
  * @version 1.0
  * @date 2024/9/27
- * @className AttrRangeValidator
+ * @className DoubleRangeValidator
  * @desc 属性范围校验器
  */
-public class AttrRangeValidator implements ConstraintValidator<AttrRange, Double> {
+public class DoubleRangeValidator implements ConstraintValidator<DoubleRange, Double> {
 
     private double min;
     private double max;
 
     @Override
-    public void initialize(AttrRange constraintAnnotation) {
+    public void initialize(DoubleRange constraintAnnotation) {
         this.min = constraintAnnotation.min();
         this.max = constraintAnnotation.max();
     }
