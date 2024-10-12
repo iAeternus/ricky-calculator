@@ -45,10 +45,6 @@ public class PagedList<T> {
                 .build();
     }
 
-    public static <T> PagedList<T> pagedList(Pagination pagination) {
-        return pagedList(pagination, 0, List.of());
-    }
-
     public long size() {
         return data.size();
     }

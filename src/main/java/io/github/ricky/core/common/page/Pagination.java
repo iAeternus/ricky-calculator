@@ -4,6 +4,8 @@ import io.github.ricky.core.common.exception.RcException;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 
+import static io.github.ricky.core.common.page.PageQuery.*;
+
 /**
  * @author Ricky
  * @version 1.0
@@ -26,20 +28,20 @@ public class Pagination {
     private final int pageSize;
 
     private Pagination(int pageIndex, int pageSize) {
-        if (pageIndex < 1) {
-            throw RcException.requestValidationException("detail", "pageIndex不能小于1");
+        if (pageIndex < MIN_PAGE_INDEX) {
+            throw RcException.requestValidationException("detail", "pageIndex不能小于" + MIN_PAGE_INDEX);
         }
 
-        if (pageIndex > 10000) {
-            throw RcException.requestValidationException("detail", "pageIndex不能大于10000");
+        if (pageIndex > MAX_PAGE_INDEX) {
+            throw RcException.requestValidationException("detail", "pageIndex不能大于" + MAX_PAGE_INDEX);
         }
 
-        if (pageSize < 10) {
-            throw RcException.requestValidationException("detail", "pageSize不能小于10");
+        if (pageSize < MIN_PAGE_SIZE) {
+            throw RcException.requestValidationException("detail", "pageSize不能小于" + MIN_PAGE_SIZE);
         }
 
-        if (pageSize > 500) {
-            throw RcException.requestValidationException("detail", "pageSize不能大于500");
+        if (pageSize > MAX_PAGE_SIZE) {
+            throw RcException.requestValidationException("detail", "pageSize不能大于" + MAX_PAGE_SIZE);
         }
 
         this.pageIndex = pageIndex;

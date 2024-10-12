@@ -1,6 +1,7 @@
 package io.github.ricky.apiTest.core.relic;
 
 import io.github.ricky.apiTest.BaseApiTest;
+import io.github.ricky.core.common.page.PageQuery;
 import io.github.ricky.core.common.page.PagedList;
 import io.github.ricky.core.relic.application.dto.CalculateScoreCommand;
 import io.github.ricky.core.relic.application.dto.CalculateScoreResponse;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static io.github.ricky.core.common.page.PageQuery.MIN_PAGE_SIZE;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
@@ -78,7 +80,7 @@ public class RelicControllerApiTest extends BaseApiTest {
                 .position(0)
                 .scoreGt(45.0)
                 .pageIndex(1)
-                .pageSize(10)
+                .pageSize(MIN_PAGE_SIZE)
                 .build();
 
         // When
@@ -86,7 +88,7 @@ public class RelicControllerApiTest extends BaseApiTest {
 
         // Then
         List<Relic> relics = relicRepository.listAll();
-        assertEquals(pagedList.size(), Math.min(10, relics.size()));
+        assertEquals(pagedList.size(), Math.min(MIN_PAGE_SIZE, relics.size()));
     }
 
 }

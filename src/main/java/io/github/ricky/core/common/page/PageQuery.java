@@ -25,17 +25,22 @@ import org.springframework.data.mongodb.core.query.CriteriaDefinition;
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public abstract class PageQuery implements Query {
 
+    public static final int MIN_PAGE_INDEX = 1;
+    public static final int MAX_PAGE_INDEX = 10000;
+    public static final int MIN_PAGE_SIZE = 10;
+    public static final int MAX_PAGE_SIZE = 100;
+
     /**
      * 页号
      */
-    @Min(1)
+    @Min(MIN_PAGE_INDEX)
     private int pageIndex;
 
     /**
      * 页面大小
      */
-    @Min(10)
-    @Max(100)
+    @Min(MIN_PAGE_SIZE)
+    @Max(MAX_PAGE_SIZE)
     private int pageSize;
 
 }
