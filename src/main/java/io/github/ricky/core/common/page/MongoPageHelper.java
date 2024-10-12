@@ -12,6 +12,7 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
 /**
  * @author Ricky
@@ -90,6 +91,9 @@ public class MongoPageHelper {
         return new QueryBuilder(new Query());
     }
 
+    /**
+     * 分页查询条件建造者
+     */
     public static class QueryBuilder {
         private final Query query;
 
@@ -98,51 +102,29 @@ public class MongoPageHelper {
         }
 
         public QueryBuilder where(String key, String value) {
-            if (StringUtils.isNotBlank(value)) {
+            where(key, value, StringUtils::isNotBlank);
+            return this;
+        }
+
+        public QueryBuilder where(String key, Object value) {
+            where(key, value, Objects::nonNull);
+            return this;
+        }
+
+        public <T> QueryBuilder where(String key, T value, Predicate<T> nullJudgement) {
+            if(nullJudgement.test(value)) {
                 query.addCriteria(Criteria.where(key).is(value));
             }
             return this;
         }
 
-        // public QueryBuilder where(String key, Integer value) {
-        //     if (Objects.nonNull(value)) {
-        //         query.addCriteria(Criteria.where(key).is(value));
-        //     }
-        //     return this;
-        // }
-        //
-        // public QueryBuilder where(String key, Long value) {
-        //     if (Objects.nonNull(value)) {
-        //         query.addCriteria(Criteria.where(key).is(value));
-        //     }
-        //     return this;
-        // }
-        //
-        // public QueryBuilder where(String key, Short value) {
-        //     if (Objects.nonNull(value)) {
-        //         query.addCriteria(Criteria.where(key).is(value));
-        //     }
-        //     return this;
-        // }
-        //
-        // public QueryBuilder where(String key, Double value) {
-        //     if (Objects.nonNull(value)) {
-        //         query.addCriteria(Criteria.where(key).is(value));
-        //     }
-        //     return this;
-        // }
-        //
-        // public QueryBuilder where(String key, Float value) {
-        //     if (Objects.nonNull(value)) {
-        //         query.addCriteria(Criteria.where(key).is(value));
-        //     }
-        //     return this;
-        // }
+        public QueryBuilder sortByAsc(String... properties) {
+            sortBy(Sort.Direction.ASC, properties);
+            return this;
+        }
 
-        public QueryBuilder where(String key, Object value) {
-            if(Objects.nonNull(value)) {
-                query.addCriteria(Criteria.where(key).is(value));
-            }
+        public QueryBuilder sortByDesc(String... properties) {
+            sortBy(Sort.Direction.DESC, properties);
             return this;
         }
 

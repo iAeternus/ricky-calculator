@@ -47,7 +47,7 @@ public class MongoRelicRepository extends MongoBaseRepository<Relic> implements 
         Query query = mongoPageHelper.queryBuilder()
                 .where("belongTo", pageQuery.getBelongTo())
                 .where("position", RelicPositionEnum.of(pageQuery.getPosition()))
-                .sortBy(Sort.Direction.DESC, "score", "createdAt")
+                .sortByDesc("score", "createdAt")
                 .build();
         return mongoPageHelper.pageQuery(query, Relic.class, relicConverter::convert, pagination);
     }
