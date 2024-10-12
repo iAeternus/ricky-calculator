@@ -102,13 +102,11 @@ public class MongoPageHelper {
         }
 
         public QueryBuilder where(String key, String value) {
-            where(key, value, StringUtils::isNotBlank);
-            return this;
+            return where(key, value, StringUtils::isNotBlank);
         }
 
         public QueryBuilder where(String key, Object value) {
-            where(key, value, Objects::nonNull);
-            return this;
+            return where(key, value, Objects::nonNull);
         }
 
         public <T> QueryBuilder where(String key, T value, Predicate<T> nullJudgement) {
@@ -119,13 +117,11 @@ public class MongoPageHelper {
         }
 
         public QueryBuilder sortByAsc(String... properties) {
-            sortBy(Sort.Direction.ASC, properties);
-            return this;
+            return sortBy(Sort.Direction.ASC, properties);
         }
 
         public QueryBuilder sortByDesc(String... properties) {
-            sortBy(Sort.Direction.DESC, properties);
-            return this;
+            return sortBy(Sort.Direction.DESC, properties);
         }
 
         public QueryBuilder sortBy(Sort.Direction direction, String... properties) {
