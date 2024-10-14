@@ -95,6 +95,14 @@ public class Polynomial implements ValueObject {
         }
     }
 
+    public static Polynomial of(double[] coefs) {
+        return new Polynomial(coefs);
+    }
+
+    public static Polynomial of(String polynomial) {
+        return new Polynomial(polynomial);
+    }
+
     /**
      * 添加项
      *

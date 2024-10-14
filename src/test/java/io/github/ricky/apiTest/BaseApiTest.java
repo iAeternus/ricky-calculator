@@ -7,6 +7,7 @@ import io.github.ricky.core.common.exception.ErrorCodeEnum;
 import io.github.ricky.core.common.exception.QErrorResponse;
 import io.github.ricky.core.common.constants.RcConstants;
 import io.github.ricky.core.common.utils.RcObjectMapper;
+import io.github.ricky.core.polynomial.domain.PolynomialExpressionRepository;
 import io.github.ricky.core.relic.domain.RelicRepository;
 import io.restassured.RestAssured;
 import io.restassured.builder.RequestSpecBuilder;
@@ -55,6 +56,9 @@ public class BaseApiTest {
 
     @Autowired
     protected RelicRepository relicRepository;
+
+    @Autowired
+    protected PolynomialExpressionRepository polynomialExpressionRepository;
 
     // add here...
 

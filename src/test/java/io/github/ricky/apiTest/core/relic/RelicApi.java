@@ -20,7 +20,7 @@ import io.restassured.response.Response;
  */
 public class RelicApi {
 
-    public static final String ROOT_URL = "/relic";
+    private static final String ROOT_URL = "/relic";
 
     public static Response calculateScoreRaw(CalculateScoreCommand command) {
         return BaseApiTest.given()

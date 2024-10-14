@@ -14,8 +14,8 @@ public interface RcConstants {
     String AUTHORIZATION = "Authorization";
 
     String RELIC_COLLECTION = "relics";
-    String POLYNOMIAL_EXPRESSION_COLLECTION = "polynomial_expression";
-    String EVENT_COLLECTION = "event";
+    String POLYNOMIAL_EXPRESSION_COLLECTION = "polynomial_expressions";
+    String EVENT_COLLECTION = "events";
 
     String REDIS_DOMAIN_EVENT_CONSUMER_GROUP = "domain.event.group";
     String REDIS_WEBHOOK_CONSUMER_GROUP = "webhook.group";
