@@ -29,46 +29,13 @@ public class TaskExecutorConfiguration {
     }
 
     @Bean
-    public TaskExecutor qrAccessCountTaskExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(10);
-        executor.setMaxPoolSize(100);
-        executor.setQueueCapacity(500);
-        executor.initialize();
-        executor.setThreadNamePrefix("access-qr-");
-        return executor;
-    }
-
-    @Bean
     public TaskExecutor consumeDomainEventTaskExecutor() {
         ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
         executor.setCorePoolSize(10);
         executor.setMaxPoolSize(100);
         executor.setQueueCapacity(500);
         executor.initialize();
-        executor.setThreadNamePrefix("mry-event-");
-        return executor;
-    }
-
-    @Bean
-    public TaskExecutor sendWebhookTaskExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(10);
-        executor.setMaxPoolSize(100);
-        executor.setQueueCapacity(500);
-        executor.initialize();
-        executor.setThreadNamePrefix("mry-webhook-");
-        return executor;
-    }
-
-    @Bean
-    public TaskExecutor sendNotificationTaskExecutor() {
-        ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(10);
-        executor.setMaxPoolSize(100);
-        executor.setQueueCapacity(500);
-        executor.initialize();
-        executor.setThreadNamePrefix("mry-notify-");
+        executor.setThreadNamePrefix("rc-event-");
         return executor;
     }
 

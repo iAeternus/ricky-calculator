@@ -56,10 +56,10 @@ public abstract class DomainEvent {
      */
     private int consumedCount;
 
-    /**
-     * 引发该事件的memberId
-     */
-    private String raisedBy;
+    // /**
+    //  * 引发该事件的memberId
+    //  */
+    // private String raisedBy;
 
     /**
      * 事件产生时间
@@ -70,6 +70,11 @@ public abstract class DomainEvent {
         Objects.requireNonNull(type, "Domain event type must not be null.");
 
         this.id = newEventId();
+        this.type = type;
+        this.status = DomainEventStatusEnum.CREATED;
+        this.publishedCount = 0;
+        this.consumedCount = 0;
+        this.raisedAt = Instant.now();
     }
 
     /**

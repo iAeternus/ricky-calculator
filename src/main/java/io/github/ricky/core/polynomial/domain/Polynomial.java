@@ -167,7 +167,7 @@ public class Polynomial implements ValueObject {
         int minExp = getMinExp();
         double result = 0.0;
         for (int exp = maxExp; exp >= minExp; --exp) {
-            double coef = ifNullFixedToZero(terms.get(exp));
+            double coef = fixedToZeroIfNull(terms.get(exp));
             result = result * x0 + coef;
         }
         return result;
@@ -363,8 +363,8 @@ public class Polynomial implements ValueObject {
         int minExp = Math.min(this.getMinExp(), another.getMinExp());
         Polynomial result = new Polynomial();
         forEachCoef(maxExp, minExp, (exp) -> {
-            double coef = ifNullFixedToZero(this.terms.get(exp));
-            double anotherCoef = ifNullFixedToZero(another.terms.get(exp));
+            double coef = fixedToZeroIfNull(this.terms.get(exp));
+            double anotherCoef = fixedToZeroIfNull(another.terms.get(exp));
             result.addTerm(operation.operate(coef, anotherCoef), exp);
         });
         return result;
@@ -393,7 +393,7 @@ public class Polynomial implements ValueObject {
      * @param num 浮点数
      * @return 若为null修正为0.0，否则什么都不做
      */
-    private static double ifNullFixedToZero(Double num) {
+    private static double fixedToZeroIfNull(Double num) {
         return num != null ? num : 0.0;
     }
 
